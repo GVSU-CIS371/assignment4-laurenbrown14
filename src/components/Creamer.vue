@@ -1,10 +1,23 @@
 <template>
-  <div class="froth">
-    <div v-for=" in 5" class="foam"></div>
+  <div v-if="type.id !== 'c1'" class="froth">
+    <div
+      v-for="n in 5"
+      :key="n"
+      class="foam"
+      :style="{ '--foam-color': type.color }"
+    ></div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+interface CreamerType {
+  id: string;
+  name: string;
+  color: string;
+}
+
+defineProps<{ type: CreamerType }>();
+</script>
 <style lang="scss" scoped>
 .froth {
   overflow: visible;
@@ -16,8 +29,8 @@
   animation: pour-tea 2s 2s forwards;
 }
 .foam {
+  background-color: var(--foam-color);
   display: block;
-  background: #e4e0d2;
   border-radius: 30px;
   height: 40px;
   width: 40px;
