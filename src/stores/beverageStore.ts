@@ -28,9 +28,9 @@ export const useBeverageStore = defineStore("BeverageStore", {
       const newRecipe = {
         name: this.beverageName,
         temp: this.currentTemp,
-        base: { ...this.currentBase },
-        syrup: { ...this.currentSyrup },
-        creamer: { ...this.currentCreamer },
+        base: this.currentBase,
+        syrup: this.currentSyrup,
+        creamer: this.currentCreamer,
       };
 
       this.savedBeverages.push(newRecipe);
